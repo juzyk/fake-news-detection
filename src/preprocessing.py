@@ -5,7 +5,6 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-# Download NLTK resources (only first time)
 nltk.download("stopwords")
 nltk.download("wordnet")
 
@@ -13,25 +12,16 @@ stop_words = set(stopwords.words("english"))
 lemmatizer = WordNetLemmatizer()
 
 def clean_dataset(df):
-    """
-    Remove missing values, empty texts and duplicates.
-    """
-
-    # Remove NaN values
     df = df.dropna(subset=["text", "label"])
 
-    # Convert to string
     df["text"] = df["text"].astype(str)
 
-    # Remove empty rows
     df = df[df["text"].str.strip() != ""]
 
-    # Remove duplicate texts
     print(f"Duplicate texts: {df.duplicated(subset=['text']).sum()}")
 
     df = df.drop_duplicates(subset=["text"], keep="first")
 
-    # Reset index
     df = df.reset_index(drop=True)
 
     print(f"Dataset size after cleaning: {len(df)}")
