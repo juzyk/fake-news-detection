@@ -10,15 +10,16 @@ The project covers the complete machine learning workflow, including data prepro
 
 ## Features
 
-- Data preprocessing and text cleaning
+- Data preprocessing and text cleaning pipeline
 - Exploratory Data Analysis (EDA)
 - TF-IDF feature extraction
+- Stylometric feature engineering
 - Multiple machine learning models
 - Hyperparameter tuning
 - Weighted ensemble model (SVM + XGBoost)
 - Model evaluation using multiple metrics
 - Interactive Streamlit web application
-- Prediction confidence score
+- Real-time prediction interface
 - Saved model and vectorizer for inference
 
 ## Technologies
@@ -65,18 +66,32 @@ The final model is a weighted ensemble combining:
 ```text
 fake-news-detection/
 │
-├── app.py
-├── train.py
+├── app/
+│   └── app.py                
+│
 ├── src/
+│   ├── data_collection.py
+│   ├── preprocessing.py
+│   ├── feature_engineering.py
+│   ├── train_models.py
+│   ├── hyperparameter_tuning.py
+│   ├── ensemble.py
+│   └── save_model.py
+│
 ├── models/
-├── notebooks/
-├── reports/
+│   ├── model.pkl
+│   └── vectorizer.pkl
+│
 ├── data/
+│
+├── notebooks/
+│   └── news_classification_code.ipynb
+│
 ├── screenshots/
-├── tests/
-├── README.md
+│
+├── train.py                  
 ├── requirements.txt
-└── LICENSE
+└── README.md
 ```
 
 ## Dataset
@@ -88,12 +103,6 @@ This project was developed using multiple public fake news datasets, including:
 - LIAR Dataset
 
 The datasets are **not included** in this repository because of their size.
-
-After downloading them, place the files inside:
-
-```text
-data/raw/
-```
 
 ## Installation
 
